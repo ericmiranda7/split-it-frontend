@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>SplitIt</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="./icon.svg" />
+</head>
+
+<body>
+  <h1>Split It</h1>
+  <form id="new-expense-form">
+    <fieldset>
+      <legend>How much did you spend?</legend>
+      <p>
+        <label for="expense-name">Spent on</label>
+        <input type="text" id="expense-name" required>
+      </p>
+      <p>
+        <label for="amount">Expense</label>
+        <input type="number" id="amount" required />
+      </p>
+    </fieldset>
+    <p>
+      <button type="submit">Add Expense</button>
+    </p>
+  </form>
+
+  <section id="expenses">
+    <ol id="expense-list">
+      <!-- <li>Cherus - 500</li>
+        <li>Dog food - 400</li>
+        <li>Pickle - 26</li> -->
+    </ol>
+  </section>
+  <script src="app.js" defer></script>
+  <!-- Register the app's service worker. -->
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("sw.js");
+    }
+  </script>
+</body>
+
+</html>

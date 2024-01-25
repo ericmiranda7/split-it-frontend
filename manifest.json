@@ -1,0 +1,14 @@
+{
+  "short_name": "Split It",
+  "description": "Keep your cheap buddies accountable.",
+  "start_url": "/",
+  "theme_color": "#191a19",
+  "background_color": "#2a2e2a",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any"
+    }
+  ]
+}
