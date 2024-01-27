@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>SplitIt</title>
+  <link rel="stylesheet" href="./src/style.css" />
+  <link rel="manifest" href="./src/manifest.json" />
+  <link rel="icon" href="../static/icon.svg" />
+</head>
+
+<body class="dark" style="height: 100%;">
+  <div id="app">lole</div>
+  <script type="module" src="src/main.ts"></script>
+  <!-- Register the app's service worker. -->
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("sw.js");
+    }
+  </script>
+</body>
+
+</html>
