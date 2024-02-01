@@ -1,17 +1,15 @@
-<script>
-    async function getAmount() {
-        const res = await fetch('http://localhost:8080')
-        return await res.text();
-    }
+<script lang="ts">
+    import {OWE, ARE_OWED} from '../consts.js'
+    import type {PageData} from "./$types";
 
+    export let data: PageData;
+
+    const oweString = data.amt > 0 ? OWE : ARE_OWED;
 </script>
 
 <h1>
-    Welcome to Split It. You owe
-    {#await getAmount()}
-        umm
-    {:then amount}
-        {amount}
-    {/await}
+    You {oweString}
+    <span class="{oweString === OWE ? 'text-red-500' : 'text-green-500'}">
+        {data.amt < 0 ? -data.amt : data.amt}
+    </span>
 </h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
