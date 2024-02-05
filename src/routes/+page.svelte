@@ -3,7 +3,6 @@
     import Home from "$lib/components/Home.svelte";
 
     export let data: PageData;
-
 </script>
 
 <Home amountOwed="{data.amount}" />
