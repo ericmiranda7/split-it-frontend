@@ -3,7 +3,13 @@
 Available at https://split-it-frontend.vercel.app/
 
 ## Developing
-
+### Environment setup
+Setup the environment by creating a `.env` file in the root of the repo with the following contents:
+```dotenv
+PUBLIC_BACKEND_HOSTNAME= # eg. "http://localhost:8080"
+PUBLIC_OAUTH_REDIRECT_URL= # eg. "http://${your_backend_url}/api/auth"
+PUBLIC_GOOGLE_CLIENT_ID="643429409908-hsahqtog313f521vriipqj6o8fgl0fva.apps.googleusercontent.com"
+```
 Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
 ```bash
