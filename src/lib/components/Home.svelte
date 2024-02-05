@@ -9,7 +9,7 @@
     const oweString = amountOwed > 0 ? OWE : ARE_OWED;
 </script>
 
-<div class="flex flex-col h-full">
+<div class="flex-col grow">
     <h1>
         You {oweString}
         <span class="{oweString === OWE ? 'text-red-500' : 'text-green-500'}">
@@ -23,7 +23,4 @@
         <ExpenseList />
     </div>
 
-    <BlockSeperator />
-
-    <NavigationTab />
 </div>
