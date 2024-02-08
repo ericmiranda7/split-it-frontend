@@ -3,12 +3,11 @@
     import {page} from "$app/stores";
     import type {PageData} from "../../.svelte-kit/types/src/routes/$types";
 
-    const name = $page.data.user.name
     export let data: PageData;
 </script>
 
+<p>Hi, {$page.data.user?.name}</p>
 <a href="/login">login</a>
-
-<p>Hi, {name}</p>
+<a href="/about">about</a>
 
 <Home amountOwed="{Number.parseFloat(data.amount)}" />

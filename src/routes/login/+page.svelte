@@ -8,9 +8,7 @@
     import {goto} from "$app/navigation";
     import {onMount} from "svelte";
 
-    let name = $page.data.user.name
-
-    // go home on successful login
+    let name = $page.data.user?.name
     onMount(() => {
         if ($page.url.searchParams.get('redirect') === 'true') {
             goto('/')

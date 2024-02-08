@@ -2,18 +2,22 @@
     import "../app.css";
     import NavigationTab from "$lib/components/NavigationTab.svelte";
     import BlockSeperator from "$lib/components/BlockSeperator.svelte";
-    import {page} from "$app/stores";
+    import {navigating} from "$app/stores";
+    import {browser} from "$app/environment";
     import {goto} from "$app/navigation";
-    import {onMount} from "svelte";
+    import {getCookie} from "$lib/cookie";
 
-    // ensure client side auth guard
-    onMount(() => {
-        page.subscribe((page) => {
-            if (!page.data.user.isAuthenticated && page.route.id !== '/login') {
-                goto('/login')
-            }
+    // client side route protection
+    if (browser) {
+        navigating.subscribe((nav) => {
+            if (!nav) return
+
+            const toRoute = nav.to?.route.id
+            nav.complete.then(() => {
+                if (toRoute !== '/login' && !getCookie('name')) goto('/login')
+            })
         })
-    })
+    }
 </script>
 
 <div class="grow">
