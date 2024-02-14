@@ -9,5 +9,6 @@
 <p>Hi, {$page.data.user?.name}</p>
 <a href="/login">login</a>
 <a href="/about">about</a>
+<a href="/logout">logout</a>
 
 <Home amountOwed="{Number.parseFloat(data.amount)}" />

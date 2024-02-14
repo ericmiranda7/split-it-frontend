@@ -14,8 +14,8 @@ export async function load({ cookies , url}) {
             path: '/',
             httpOnly: false
         })
-        return {
-            user: {isAuthenticated, name}
-        }
+    }
+    return {
+        user: {isAuthenticated, name}
     }
 }
