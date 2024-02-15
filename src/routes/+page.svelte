@@ -7,8 +7,8 @@
 </script>
 
 <p>Hi, {$page.data.user?.name}</p>
-<a href="/login">login</a>
+<a href="/login" data-sveltekit-preload-data="false">login</a>
 <a href="/about">about</a>
-<a href="/logout">logout</a>
+<a href="/logout" data-sveltekit-reload="true" data-sveltekit-preload-data="false">logout</a>
 
 <Home amountOwed="{Number.parseFloat(data.amount)}" />

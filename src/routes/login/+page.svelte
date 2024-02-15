@@ -5,8 +5,9 @@
 <script lang="ts">
     import {env} from "$env/dynamic/public";
     import {page} from "$app/stores";
-    import {goto} from "$app/navigation";
+    import { goto, invalidateAll } from '$app/navigation';
     import {onMount} from "svelte";
+    import { browser } from '$app/environment';
 
     let name = $page.data.user?.name
     onMount(() => {

@@ -1,4 +1,6 @@
 // runs on server when backend responds to frontend
+import { invalidateAll } from '$app/navigation';
+
 export async function load({ cookies , url}) {
     const token = url.searchParams.get('token')
     const name = url.searchParams.get('name')
@@ -14,8 +16,8 @@ export async function load({ cookies , url}) {
             path: '/',
             httpOnly: false
         })
-    }
-    return {
-        user: {isAuthenticated, name}
+        return {
+            user: {isAuthenticated, name}
+        }
     }
 }
