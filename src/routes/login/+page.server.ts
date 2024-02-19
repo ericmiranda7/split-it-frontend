@@ -1,23 +1,27 @@
-// runs on server when backend responds to frontend
-import { invalidateAll } from '$app/navigation';
+import type { ServerLoad } from '@sveltejs/kit';
 
-export async function load({ cookies , url}) {
-    const token = url.searchParams.get('token')
-    const name = url.searchParams.get('name')
-    const isAuthenticated = token !== null
+export const load: ServerLoad = async ({ cookies , url}) => {
+    if (cookies.get('token')) {
+        // auth existing, do nothing.
+        console.log('i in')
+        return {}
+    }
+
+    const urlToken = url.searchParams.get('token')
+    const urlName = url.searchParams.get('name')
 
     // set client cookies with auth info
-    if (isAuthenticated && name) {
-        cookies.set('token', token, {
+    if (urlToken && urlName) {
+        cookies.set('token', urlToken, {
             path: '/',
             httpOnly: false
         })
-        cookies.set('name', name, {
+        cookies.set('name', urlName, {
             path: '/',
             httpOnly: false
         })
         return {
-            user: {isAuthenticated, name}
+            user: {isAuthenticated: true, name: urlName}
         }
     }
 }
