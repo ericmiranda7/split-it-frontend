@@ -1,4 +1,4 @@
-import type { ServerLoad } from '@sveltejs/kit';
+import { redirect, type ServerLoad } from '@sveltejs/kit';
 import { env } from '$env/dynamic/public';
 
 export const load: ServerLoad = async ({locals, parent}) => {
@@ -8,9 +8,13 @@ export const load: ServerLoad = async ({locals, parent}) => {
 
 	const res = await fetch(env.PUBLIC_BACKEND_HOSTNAME + "/api/accounts/eric", {
 		headers: {
-			"Authorization": locals.user.token
+			"Authorization": `Bearer ${locals.user.token}`
 		}
 	});
+
+	if (res.status != 200) {
+		throw redirect(302, '/login')
+	}
 
 	return {
 		amount: await res.text(),
