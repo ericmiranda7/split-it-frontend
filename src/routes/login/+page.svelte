@@ -7,17 +7,17 @@
     import {page} from "$app/stores";
     import { goto, invalidateAll } from '$app/navigation';
     import {onMount} from "svelte";
-    import { browser } from '$app/environment';
 
     let name = $page.data.user?.name
+
     onMount(() => {
         if ($page.url.searchParams.get('redirect') === 'true') {
-            goto('/')
+            goto('/protected/home', {invalidateAll: true})
         }
     })
 </script>
 
-<a href="/">go home</a>
+<a href="/protected/home">go home</a>
 
 {#if name}
     <p>Hi, {name}, no need to login</p>

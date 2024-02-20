@@ -1,14 +1,8 @@
-import type { ServerLoad } from '@sveltejs/kit';
+import { redirect, type ServerLoad } from '@sveltejs/kit';
 
-export const load: ServerLoad = async ({ cookies , url}) => {
-    if (cookies.get('token')) {
-        // auth existing, do nothing.
-        console.log('i in')
-        return {}
-    }
-
+export const load: ServerLoad = async ({cookies , url}) => {
     const urlToken = url.searchParams.get('token')
-    const urlName = url.searchParams.get('name')
+    const urlName = url.searchParams.get('name')?.replace('%20', ' ')
 
     // set client cookies with auth info
     if (urlToken && urlName) {
@@ -20,8 +14,7 @@ export const load: ServerLoad = async ({ cookies , url}) => {
             path: '/',
             httpOnly: false
         })
-        return {
-            user: {isAuthenticated: true, name: urlName}
-        }
+
+        throw redirect(302, '/')
     }
 }

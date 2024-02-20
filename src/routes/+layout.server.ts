@@ -1,15 +1,9 @@
-import { env } from "$env/dynamic/public";
-import {redirect} from "@sveltejs/kit";
+import { authenticateUser } from '$lib/auth';
 
-// runs on server at initial web application load
-export async function load({locals, route, fetch}) {
+export const load = async ({locals, cookies}) => {
     // @ts-ignore
-    const user = locals.user
+    locals.user = authenticateUser(cookies)
 
-    // server side route protection
-    if (!user && route.id !== '/login') throw redirect(302, '/login')
-
-    return {
-        user: user
-    }
+    // @ts-ignore
+    return {user: locals.user}
 }
