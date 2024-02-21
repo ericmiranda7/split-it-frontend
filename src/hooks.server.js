@@ -7,7 +7,6 @@ export function handle({event, resolve}) {
 	console.log('server hook ran')
 	// @ts-ignore
 	let user = authenticateUser(event.cookies)
-
 	if (!user?.token && event.route.id !== '/login') {
 		redirect(302, '/login')
 	}

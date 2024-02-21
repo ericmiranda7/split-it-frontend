@@ -12,12 +12,10 @@
 
     onMount(() => {
         if ($page.url.searchParams.get('redirect') === 'true') {
-            goto('/protected/home', {invalidateAll: true})
+            goto('/app/home', {invalidateAll: true})
         }
     })
 </script>
-
-<a href="/protected/home">go home</a>
 
 {#if name}
     <p>Hi, {name}, no need to login</p>

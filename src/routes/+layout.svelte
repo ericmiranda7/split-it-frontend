@@ -1,13 +1,13 @@
 <script lang="ts">
-    import "../app.css";
-    import NavigationTab from "$lib/components/NavigationTab.svelte";
-    import BlockSeperator from "$lib/components/BlockSeperator.svelte";
+	import '../app.css';
+	import NavigationTab from '$lib/components/NavigationTab.svelte';
+	import BlockSeperator from '$lib/components/BlockSeperator.svelte';
 </script>
 
 <div class="grow">
-    <slot/>
+		<slot />
 </div>
 
-<BlockSeperator/>
+<BlockSeperator />
 
-<NavigationTab/>
+<NavigationTab />
