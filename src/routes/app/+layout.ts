@@ -1,2 +1,2 @@
-// app/** is all SPA due to native app-like interactivity requirement
-export const ssr = false;
+// app/* is SPA for high interactivity requirements
+export const ssr = false
