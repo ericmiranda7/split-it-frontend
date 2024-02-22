@@ -10,4 +10,5 @@
 </script>
 henlu and welcome to split that, {$page.data.user?.name}
 <br>
+<div style="height: 10px; background-color: #EAEFF5"></div>
 loading app...
