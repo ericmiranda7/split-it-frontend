@@ -1,6 +1,7 @@
 # Split That
 
 Available at https://split-it-frontend.vercel.app/
+Backend Code at https://github.com/ericmiranda7/split-it-backend
 
 ## Business Requirements
 ### User Stories
