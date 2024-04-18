@@ -1,13 +1,27 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + Svelte + TS</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+<html lang="en" class="dark h-full overscroll-none">
+<head>
+	<meta charset="utf-8" />
+	<link rel="icon" type="image/svg+xml" href="/vite.svg" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta charset="utf-8" />
+	<meta name="theme-color" content="#000000" />
+	<!-- Apple does not allow svg icons. -->
+	<!-- Use 196x196 png instead -->
+	<link rel="apple-touch-icon"
+				href="./src/assets/apple-touch-icon.png" />
+	<link rel="apple-touch-icon-precomposed"
+				href="./src/assets/apple-touch-icon-precomposed.png" />
+
+	<link rel="icon" sizes="196x196" href="./src/assets/apple-touch-icon.png" />
+	<link rel="manifest" href="./src/assets/manifest.json" />
+	<title>Split It</title>
+	<meta name="viewport" content="width=device-width" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="mobile-wep-app-capable" content="yes" />
+</head>
+<body class="h-full p-4">
+  <div class="h-full flex flex-col" id="app"></div>
+  <script type="module" src="./src/main.ts"></script>
+</body>
 </html>
