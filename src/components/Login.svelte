@@ -16,8 +16,12 @@
 			console.log(urlParams.getAll('name'))
 			$user.name = urlParams.get('name')!
 			$user.token = urlParams.get('token')!
+			$user.isAuthenticated = true
 
-			console.log($user)
+			if ($user.name && $user.token) {
+				document.cookie = `user=${JSON.stringify($user)}`
+			}
+
 			navigate('/home')
 		}
 	})

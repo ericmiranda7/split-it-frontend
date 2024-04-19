@@ -3,8 +3,10 @@
   import user from './lib/store'
   import Home from './components/Home.svelte';
   import Login from './components/Login.svelte';
+  import { authenticateUser } from '$lib/auth';
 
   $: {
+    $user = authenticateUser();
     if ($user.name) {
       setTimeout(() => navigate("/home"), 1000)
     }
