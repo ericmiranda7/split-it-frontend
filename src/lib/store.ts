@@ -1,7 +1,7 @@
 import { writable } from 'svelte/store';
 
-const user = writable({} as
+export const user = writable({} as
 	{name: string, token: string, isAuthenticated: boolean}
 )
 
-export default user;
+export const expenseAccount = writable({} as any)

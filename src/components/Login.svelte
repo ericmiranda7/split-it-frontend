@@ -4,7 +4,7 @@
 
 <script lang="ts">
 	import {onMount} from "svelte";
-	import user from '$lib/store';
+	import {user} from '$lib/store';
 	import { navigate } from 'svelte-routing';
 
 	let name = $user.name

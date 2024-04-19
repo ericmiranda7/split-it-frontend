@@ -1,6 +1,6 @@
 <script lang="ts">
   import { navigate, Route, Router } from 'svelte-routing';
-  import user from './lib/store'
+  import {user} from '$lib/store'
   import Home from './components/Home.svelte';
   import Login from './components/Login.svelte';
   import { authenticateUser } from '$lib/auth';
