@@ -2,6 +2,7 @@
 	import { user, expenseAccount} from '$lib/store';
 	import { onMount } from 'svelte';
 	import BlockSeperator from './BlockSeperator.svelte';
+	import { Link } from 'svelte-routing';
 
 	const oweString = $expenseAccount.amountOwed > 0 ? 'owe' : 'are owed';
 
@@ -19,9 +20,9 @@
 </script>
 
 <p>Hi, {$user.name}</p>
-<a href="/login">login</a>
-<a href="/about">about</a>
-<a href="/logout" data-sveltekit-reload="true" data-sveltekit-preload-data="false">logout</a>
+<Link to="/login">login</Link>
+<Link to="/about">about</Link>
+<Link to="/logout">logout</Link>
 
 <div class="flex-col grow">
 	<h1>

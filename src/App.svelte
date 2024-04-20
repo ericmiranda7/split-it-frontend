@@ -5,11 +5,13 @@
   import Login from './components/Login.svelte';
   import { authenticateUser } from '$lib/auth';
   import About from './components/About.svelte';
+  import Logout from './components/Logout.svelte';
 
   $: {
+    console.log('meshourldrun once')
     $user = authenticateUser();
     if (!$user.name) {
-      setTimeout(() => navigate("/login"), 1000)
+      navigate("/login" + window.location.search)
     }
   }
 
@@ -21,6 +23,7 @@
     <Route path="/home" component={Home}/>
     <Route path="/about" component={About}/>
     <Route path="/login" component={Login}/>
+    <Route path="/logout" component={Logout}/>
     <Route path="" component="{Home}"/>
   </Router>
 </main>
