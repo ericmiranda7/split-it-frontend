@@ -20,8 +20,8 @@
 
 <p>Hi, {$user.name}</p>
 <a href="/login">login</a>
-<a href="/app/about">about</a>
-<a href="/app/logout" data-sveltekit-reload="true" data-sveltekit-preload-data="false">logout</a>
+<a href="/about">about</a>
+<a href="/logout" data-sveltekit-reload="true" data-sveltekit-preload-data="false">logout</a>
 
 <div class="flex-col grow">
 	<h1>
