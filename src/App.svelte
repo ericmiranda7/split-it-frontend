@@ -8,7 +8,6 @@
   import Logout from './components/Logout.svelte';
 
   $: {
-    console.log('meshourldrun once')
     $user = authenticateUser();
     if (!$user.name) {
       navigate("/login" + window.location.search)
@@ -18,7 +17,7 @@
   export let url = "";
 </script>
 
-<main>
+<main class="max-h-full h-full">
   <Router {url}>
     <Route path="/home" component={Home}/>
     <Route path="/about" component={About}/>

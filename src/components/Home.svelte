@@ -1,41 +1,87 @@
-<script>
-	import { user, expenseAccount} from '$lib/store';
+<script lang="ts" , type="module">
+	import { user, expenseAccount } from '$lib/store';
 	import { onMount } from 'svelte';
-	import BlockSeperator from './BlockSeperator.svelte';
-	import { Link } from 'svelte-routing';
+	import Button from '$lib/components/ui/button/button.svelte';
+	import Separator from '$lib/components/ui/separator/separator.svelte';
+	import * as Drawer from '$lib/components/ui/drawer';
+	import { ScrollArea } from '$lib/components/ui/scroll-area/index.js';
+	import { SeparatorVertical } from 'lucide-svelte';
 
 	const oweString = $expenseAccount.amountOwed > 0 ? 'owe' : 'are owed';
 
 	onMount(async () => {
 		fetch(import.meta.env.VITE_BACKEND_HOSTNAME + '/api/accounts', {
-			headers: { 'Authorization': `Bearer ${$user.token}` }
+			headers: { Authorization: `Bearer ${$user.token}` }
 		})
 			// .then(response => response.json())
-			.then(res => res.json())
-			.then(data => {
-				$expenseAccount = {amountOwed: data}
+			.then((res) => res.json())
+			.then((data) => {
+				$expenseAccount = { amountOwed: data };
 			})
-			.catch(err => console.log(err))
-	})
+			.catch((err) => console.log(err));
+	});
+
+	let expenses = [];
+	for (let i = 0; i < 99; i++) {
+		expenses.push('Milk ' + (i+1))
+	}
 </script>
 
-<p>Hi, {$user.name}</p>
-<Link to="/login">login</Link>
-<Link to="/about">about</Link>
-<Link to="/logout">logout</Link>
-
-<div class="flex-col grow">
+<div class="max-h-full flex flex-col">
 	<h1>
 		You {oweString}
-		<span class="{oweString === 'owe' ? 'text-red-500' : 'text-green-500'}">
+		<span class={oweString === 'owe' ? 'text-red-500' : 'text-green-500'}>
 			{$expenseAccount.amountOwed < 0 ? -$expenseAccount.amountOwed : $expenseAccount.amountOwed}
-    </span>
+		</span>
 	</h1>
+	<Separator class="p-0.5 -mx-3 my-2 w-auto" />
+	<!-- <Link to="/login">login</Link>
+<Link to="/about">about</Link>
+<Link to="/logout">logout</Link> -->
 
-	<BlockSeperator />
+	<ScrollArea class="self-stretch flex flex-col rounded-md border">
+		<ol class="self-stretch">
+			{#each expenses as exp}
+				<ul>{exp}</ul>
+				<Separator />
+			{/each}
+		</ol>
+	</ScrollArea>
 
-	<div class="grow">
-<!--		<ExpenseList />-->
+	<div>
+		<Drawer.Root>
+			<Drawer.Trigger class="border border-black"><p>Add Expense</p></Drawer.Trigger>
+			<Drawer.Content>
+				<Drawer.Header>
+					<Drawer.Title>Add An Expense</Drawer.Title>
+					<Drawer.Description>You, Naishar, Joswin & 3 Others</Drawer.Description>
+				</Drawer.Header>
+
+				<Separator class="mb-4" />
+
+				<div>
+					<form>
+						<div class="flex justify-center">
+							<label class="block p-2" for="amount">R</label>
+							<input class="block" type="number" id="amount" name="amount" />
+						</div>
+						<div class="flex justify-center m-2">
+							<label class="block p-2" for="descr">D</label>
+							<input class="block" type="text" id="descr" name="descr" />
+						</div>
+					</form>
+
+					<div>
+						<p class="text-center">Paid by</p>
+						<p class="text-center">Split</p>
+					</div>
+				</div>
+
+				<Drawer.Footer>
+					<Button>Submit</Button>
+					<Drawer.Close>Cancel</Drawer.Close>
+				</Drawer.Footer>
+			</Drawer.Content>
+		</Drawer.Root>
 	</div>
-
 </div>
