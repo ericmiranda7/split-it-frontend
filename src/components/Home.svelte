@@ -38,7 +38,7 @@
 <Link to="/about">about</Link>
 <Link to="/logout">logout</Link> -->
 
-	<ScrollArea class="max-h-[85vh] h-[90vh] rounded-md border">
+	<ScrollArea class="max-h-[87vh] h-[90vh] rounded-md border">
 		<ol>
 			{#each expenses as exp}
 				<ul class="text-xl">{exp}</ul>
@@ -47,7 +47,7 @@
 		</ol>
 	</ScrollArea>
 
-	<div class="flex justify-center m-auto">
+	<div class="flex justify-center mt-auto mb-0">
 		<Drawer.Root>
 			<Drawer.Trigger class="mt-auto p-2"><Button>Add Expense</Button></Drawer.Trigger>
 			<Drawer.Content>
