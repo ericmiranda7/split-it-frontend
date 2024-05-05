@@ -17,7 +17,7 @@
   export let url = "";
 </script>
 
-<main class="max-h-full h-full">
+<main class="max-h-full h-full px-3 pt-3">
   <Router {url}>
     <Route path="/home" component={Home}/>
     <Route path="/about" component={About}/>
